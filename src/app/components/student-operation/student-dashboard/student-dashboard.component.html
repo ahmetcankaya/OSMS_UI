@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      <app-student-operation></app-student-operation>
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+             <!-- START row-->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card card-default">
+                        <div class="card-header">Kayıtlı Kurslarım</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Kurs Adı</th>
+                                        <th>Fiyat</th>
+                                        <th>Süre(AY)</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of studentCourses;let i=index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{item.Name}}</td>
+                                        <td>{{item.Fees}}</td>
+                                        <td>{{item.Duration}}</td>
+                                        <td>
+                                            <button class="mb-2 btn btn-green" type="button" [routerLink]="['/student/course/content/list', item.CourseID]" style="min-width: 150px;">İçerikleri Gör</button>
+                                        </td>
+                                        <td>
+                                            <button class="mb-2 btn btn-green" type="button" [routerLink]="['/student/course/detail', item.CourseID]">Kurs Detay</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- END row-->
+        <!-- START row-->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card card-default">
+                    <div class="card-header">Diğer Kurslar</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                 <th>#</th>
+                                 <th>Kurs Adı</th>
+                                 <th>Fiyat</th>
+                                 <th>Süre(AY)</th>
+                                 <th></th>
+                                 <th></th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr *ngFor="let item of courses;let i=index">
+                                 <td>{{i+1}}</td>
+                                 <td>{{item.Name}}</td>
+                                 <td>{{item.Fees}}</td>
+                                 <td>{{item.Duration}}</td>
+                                 <td>
+                                     <button class="mb-2 btn btn-green" type="button" (click)="postCourseRegistration(item.CourseID)" style="min-width: 150px;">Kayıt Ol</button>
+                                 </td>
+                                 <td>
+                                    <button class="mb-2 btn btn-green" type="button" [routerLink]="['/student/course/detail', item.CourseID]">Kurs Detay</button>
+                                </td>
+                             </tr>
+                         </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- END row-->
+        </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

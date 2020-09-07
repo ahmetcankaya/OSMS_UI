@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      
+      <app-admin-operation></app-admin-operation>
+      
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+            <!-- START cards box-->
+            <div class="row">
+               <div class="col-xl-4 col-md-8">
+                  <!-- START card-->
+                  <div class="card flex-row align-items-center align-items-stretch border-0">
+                     <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+                        <em class="icon-user fa-3x"></em>
+                     </div>
+                     <div class="col-8 py-3 bg-purple rounded-right">
+                        <div class="h2 mt-0">{{countAdmin}}
+                        </div>
+                        <div class="text-uppercase">TOPLAM ADMİN</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-md-8">
+                  <!-- START card-->
+                  <div class="card flex-row align-items-center align-items-stretch border-0">
+                     <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+                        <em class="icon-user fa-3x"></em>
+                     </div>
+                     <div class="col-8 py-3 bg-purple rounded-right">
+                        <div class="h2 mt-0">{{countTeacher}}
+                        </div>
+                        <div class="text-uppercase">TOPLAM ÖĞRETMEN</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-md-8">
+                  <!-- START card-->
+                  <div class="card flex-row align-items-center align-items-stretch border-0">
+                     <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+                        <em class="icon-user fa-3x"></em>
+                     </div>
+                     <div class="col-8 py-3 bg-purple rounded-right">
+                        <div class="h2 mt-0">{{countStudent}}
+                        </div>
+                        <div class="text-uppercase">TOPLAM ÖĞRENCİ</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END cards box-->
+            <!-- START cards box-->
+            <div class="row">
+               <div class="col-xl-4 col-md-8">
+                  <!-- START card-->
+                  <div class="card flex-row align-items-center align-items-stretch border-0">
+                     <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+                        <em class="icon-cloud-upload fa-3x"></em>
+                     </div>
+                     <div class="col-8 py-3 bg-primary rounded-right">
+                        <div class="h2 mt-0">{{countCourse}}</div>
+                        <div class="text-uppercase">TOPLAM KURS</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-md-8">
+                  <!-- START card-->
+                  <div class="card flex-row align-items-center align-items-stretch border-0">
+                     <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
+                        <em class="icon-bubbles fa-3x"></em>
+                     </div>
+                     <div class="col-8 py-3 bg-green rounded-right">
+                        <div class="h2 mt-0">{{countContext}}
+                        </div>
+                        <div class="text-uppercase">TOPLAM İÇERİK</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-8 col-md-12">
+                  <!-- START date widget-->
+                  <div class="card flex-row align-items-center align-items-stretch border-0">
+                     <div class="col-4 d-flex align-items-center bg-green justify-content-center rounded-left">
+                        <div class="text-center">
+                           <!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->
+                           <div class="text-sm" data-now="" data-format="MMMM"></div>
+                           <br>
+                           <div class="h2 mt-0" data-now="" data-format="D"></div>
+                        </div>
+                     </div>
+                     <div class="col-8 py-3 rounded-right">
+                        <div class="text-uppercase" data-now="" data-format="dddd"></div>
+                        <br>
+                        <div class="h2 mt-0" data-now="" data-format="h:mm"></div>
+                        <div class="text-muted text-sm" data-now="" data-format="a"></div>
+                     </div>
+                  </div>
+                  <!-- END date widget-->
+               </div>
+            </div>
+            <!-- END cards box-->
+            <!-- START card-->
+            <div class="card card-default">
+                <div class="card-header">Admin Kayıt</div>
+                <div class="card-body">
+                   <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+                     <input type="hidden" id="AdminID" formControlName="AdminID">
+                      <div class="form-row align-items-center">
+                         <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">UserName</label>
+                            <input class="form-control mb-2" id="UserName" formControlName="UserName" type="text" placeholder="Kullanıcı Adı" maxlength="16">
+                         </div>
+                         <div class="col-auto">
+                           <label class="sr-only" for="inlineFormInput">Password</label>
+                           <input class="form-control mb-2" id="Password" formControlName="Password" type="password" placeholder="Şifre" maxlength="16">
+                        </div>
+                         <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">Name</label>
+                            <input class="form-control mb-2" id="Name" formControlName="Name" type="text" placeholder="İsim" maxlength="16">
+                         </div>
+                         <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">SureName</label>
+                            <input class="form-control mb-2" id="SureName" formControlName="SureName" type="text" placeholder="Soyisim" maxlength="16">
+                         </div>
+                         <div class="col-auto">
+                            <button class="btn btn-primary mb-2" type="submit" [disabled]="!adminForm.valid">Kaydet</button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+             <!-- START row-->
+            <div class="row">
+               <div class="col-xl-12">
+                  <div class="card card-default">
+                     <div class="card-header">Öğrenci Listesi</div>
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-hover">
+                              <thead>
+                                 <tr>
+                                  <th>#</th>
+                                  <th>Kullanıcı Adı</th>
+                                  <th>Şifre</th>
+                                  <th>İsim</th>
+                                  <th>Soyisim</th>
+                                  <th></th>
+                                  <th></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr *ngFor="let item of admins;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.UserName}}</td>
+                                    <td>{{item.Password}}</td>
+                                    <td>{{item.Name}}</td>
+                                    <td>{{item.SureName}}</td>
+                                    <td>
+                                       <button class="mb-2 btn btn-danger" type="button" (click)="delete(item)">Sil</button>
+                                    </td>
+                                    <td>
+                                       <button class="mb-2 btn btn-success" type="button" (click)="showForEdit(item)">Güncelle</button>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END row-->
+         </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

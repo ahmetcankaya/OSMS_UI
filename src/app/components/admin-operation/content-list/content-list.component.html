@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      <app-admin-operation></app-admin-operation>
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+            <!-- Blog Content-->
+            <div class="col-xl-9" *ngFor="let item of contexts;let i=index">
+                <div class="card card-default" >
+                    <div class="card-header">
+                        <div class="bb">
+                            <small class="mr-1">Konu Başlığı</small>
+                            <h2 class="text-lg mt-3">{{item.Title}}</h2>
+                            <p class="d-flex">
+                               <small class="mr-1">Konu İçeriği</small>
+                            </p>
+                      </div>
+                    </div>
+                    <div class="card-body text-md">
+                        <p>{{item.Text}}</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

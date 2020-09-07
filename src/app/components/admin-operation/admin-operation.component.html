@@ -1,0 +1,134 @@
+
+
+      <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav class="navbar topnavbar">
+            <!-- START navbar header-->
+            <div class="navbar-header">
+               <a class="navbar-brand">
+                  <div class="brand-logo">
+                     <img class="img-fluid" src="assets/img/logo.png" alt="App Logo">
+                  </div>
+                  <div class="brand-logo-collapsed">
+                     <img class="img-fluid" src="assets/img/logo-single.png" alt="App Logo">
+                  </div>
+               </a>
+            </div>
+            <!-- END navbar header-->
+            <!-- START Left navbar-->
+            <ul class="navbar-nav mr-auto flex-row">
+               <!-- START User avatar toggle-->
+               <li class="nav-item d-none d-md-block">
+                  <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                  <a class="nav-link" id="user-block-toggle" href="#user-block" data-toggle="collapse">
+                     <em class="icon-user"></em>
+                  </a>
+               </li>
+               <!-- END User avatar toggle-->
+            </ul>
+            <!-- END Left navbar-->
+            <!-- START Right Navbar-->
+            <ul class="navbar-nav flex-row">
+               <!-- Search icon-->
+               
+               <!-- Fullscreen (only desktops)-->
+               
+               <li class="nav-item d-none d-md-block" style="margin-right: 10px;">
+                  <button class="btn btn-labeled btn-danger mb-2" type="button" (click)="onLogout()">
+                     <span class="btn-label"><i class="fa fa-times"></i></span>Çıkış
+                  </button>
+               </li>
+               <!-- START Alert menu-->
+        
+               <!-- END Alert menu-->
+               <!-- START Offsidebar button-->
+            
+               <!-- END Offsidebar menu-->
+            </ul>
+            <!-- END Right Navbar-->
+            <!-- START Search form-->
+            <form class="navbar-form" role="search" action="search.html">
+               <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Type and hit enter ...">
+                  <div class="fas fa-times navbar-form-close" data-search-dismiss=""></div>
+               </div>
+               <button class="d-none" type="submit">Submit</button>
+            </form>
+            <!-- END Search form-->
+         </nav>
+         <!-- END Top Navbar-->
+      </header>
+      <!-- sidebar-->
+      <aside class="aside-container">
+         <!-- START Sidebar (left)-->
+         <div class="aside-inner">
+            <nav class="sidebar" data-sidebar-anyclick-close="">
+               <!-- START sidebar nav-->
+               <ul class="sidebar-nav">
+                  <!-- START user info-->
+                  <li class="has-user-block">
+                     <div class="collapse" id="user-block">
+                        <div class="item user-block">
+                           <!-- User picture-->
+                           <div class="user-block-picture">
+                              <div class="user-block-status">
+                                 <img class="img-thumbnail rounded-circle" src="assets/img/user/02.jpg" alt="Avatar" width="60" height="60">
+                                 <div class="circle bg-success circle-lg"></div>
+                              </div>
+                           </div>
+                           <!-- Name and Job-->
+                           <div class="user-block-info">
+                              <span class="user-block-name">Merhaba, {{admin?.Name}}</span>
+                              <span class="user-block-role">Yetkili</span>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <!-- END user info-->
+                  <!-- Iterates over all sidebar items-->
+                  <li class="nav-heading ">
+                     <span data-localize="sidebar.heading.HEADER">Menü</span>
+                  </li>
+                  <li class=" ">
+                     <a onclick="location.href='/admin'" title="Dashboard" data-toggle="collapse">
+                        <em class="icon-layers"></em>
+                        <span data-localize="sidebar.nav.DASHBOARD">Admin İşlemleri</span>
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a onclick="location.href='/admin/teacher'" title="Widgets">
+                        <em class="icon-grid"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">Öğretmen İşlemleri</span>
+                     </a>
+                  </li>
+                  <li class=" ">
+                    <a onclick="location.href='/admin/student'" title="Widgets">
+                       <em class="icon-user"></em>
+                       <span data-localize="sidebar.nav.WIDGETS">Öğrenci İşlemleri</span>
+                    </a>
+                 </li>
+                 <li class=" ">
+                  <a onclick="location.href='/admin/course/list'" title="Widgets">
+                     <em class="icon-user"></em>
+                     <span data-localize="sidebar.nav.WIDGETS">Tüm Kurslar</span>
+                  </a>
+                  </li>
+                  <li class=" ">
+                     <a onclick="location.href='/admin/profil'" title="Widgets">
+                        <em class="icon-user"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">Profil</span>
+                     </a>
+                     </li>
+               </ul>
+               <!-- END sidebar nav-->
+            </nav>
+         </div>
+         <!-- END Sidebar (left)-->
+      </aside>
+      <!-- offsidebar-->
+      
+      <!-- Page footer-->
+      <footer class="footer-container">
+         <span>&copy; 2020 - Vedubox</span>
+      </footer>
+  

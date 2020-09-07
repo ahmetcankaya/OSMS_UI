@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      <app-teacher-operation></app-teacher-operation>
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+               <!-- START card-->
+               <div class="card card-default">
+                <div class="card-header" style="font-size: large;">Kurs İçerik Ekleme Penceresi</div>
+                <div class="card-body">
+                   <form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
+                       <fieldset>
+                        <div class="form-group row">
+                           <div class="col-md-12">
+                              <div class="input-group mb-3">
+                                 <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">#</span>
+                                 </div>
+                                 <input class="form-control" type="text" formControlName="Title" placeholder="İçerik Başlığı" aria-label="Username" aria-describedby="basic-addon1" maxlength="16">
+                              </div>
+                              <label for="basic-url">İçeriğinizi bu alana girebilir. Sağ alt kısımdan alan boyutunu ayarlayabilirsiniz.</label>
+                              <div class="input-group">
+                                 <div class="input-group-prepend">
+                                    <span class="input-group-text">#</span>
+                                 </div>
+                                 <textarea class="form-control" formControlName="Text" aria-label="With textarea"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                     </fieldset>
+                      <button class="btn btn-sm btn-success" type="submit" [disabled]="!contentForm.valid">Kaydet</button>
+                   </form>
+               </div>
+             </div>
+             <!-- END card-->
+         </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      <app-student-operation></app-student-operation>
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+            <!-- Page content-->
+        <div class="content-wrapper">
+            <div class="content-heading">
+               <div> Kurs Detay
+               </div>
+            </div>
+            <div class="clearfix mb-3">
+            </div>
+            <div class="card">
+               <table class="table table-bordered table-striped" id="user" style="clear: both">
+                  <tbody>
+                     <tr>
+                        <td style="width: 35%">Course ID</td>
+                        <td style="width: 65%">
+                           {{course.CourseID}}
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Kurs Adı</td>
+                        <td>
+                            {{course.Name}}
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Öğretmen Adı</td>
+                        <td>
+                            {{teacher.Name}}
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Öğretmen Soyadı</td>
+                        <td>
+                            {{teacher.SureName}}
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Toplam İçerik Sayısı</td>
+                        <td>
+                            {{count}}
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Fiyat</td>
+                        <td>
+                            {{course.Fees}}
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Kurs Süresi(AY)</td>
+                        <td>
+                            {{course.Duration}}
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+        
+         </div>
+         </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      <app-teacher-operation></app-teacher-operation>
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+            <!-- START cards box-->
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                   <!-- START card-->
+                   <div class="card flex-row align-items-center align-items-stretch border-0">
+                      <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+                         <em class="icon-cloud-upload fa-3x"></em>
+                      </div>
+                      <div class="col-8 py-3 bg-primary rounded-right">
+                         <div class="h2 mt-0">{{countCourse}}</div>
+                         <div class="text-uppercase">TOPLAM KURS SAYINIZ</div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                   <!-- START card-->
+                   <div class="card flex-row align-items-center align-items-stretch border-0">
+                      <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
+                         <em class="icon-user fa-3x"></em>
+                      </div>
+                      <div class="col-8 py-3 bg-purple rounded-right">
+                         <div class="h2 mt-0">{{countStudent}}
+                         </div>
+                         <div class="text-uppercase">TOPLAM ÖĞRENCİ SAYINIZ</div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-12">
+                   <!-- START card-->
+                   <div class="card flex-row align-items-center align-items-stretch border-0">
+                      <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
+                         <em class="icon-bubbles fa-3x"></em>
+                      </div>
+                      <div class="col-8 py-3 bg-green rounded-right">
+                         <div class="h2 mt-0">{{countContext}}</div>
+                         <div class="text-uppercase">TOPLAM İÇERİK SAYINIZ</div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-12">
+                   <!-- START date widget-->
+                   <div class="card flex-row align-items-center align-items-stretch border-0">
+                      <div class="col-4 d-flex align-items-center bg-green justify-content-center rounded-left">
+                         <div class="text-center">
+                            <!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->
+                            <div class="text-sm" data-now="" data-format="MMMM"></div>
+                            <br>
+                            <div class="h2 mt-0" data-now="" data-format="D"></div>
+                         </div>
+                      </div>
+                      <div class="col-8 py-3 rounded-right">
+                         <div class="text-uppercase" data-now="" data-format="dddd"></div>
+                         <br>
+                         <div class="h2 mt-0" data-now="" data-format="h:mm"></div>
+                         <div class="text-muted text-sm" data-now="" data-format="a"></div>
+                      </div>
+                   </div>
+                   <!-- END date widget-->
+                </div>
+             </div>
+             <!-- END cards box-->
+             <!-- START card-->
+             <div class="card card-default">
+                <div class="card-header">Yeni Kurs</div>
+                <div class="card-body">
+                   <form #form='ngForm' (submit)="addCourse(form)">
+                     <input type="hidden" id="TeacherID" #TeacherID="ngModel" name="TeacherID" [(ngModel)]="formModel.TeacherID">
+                      <div class="form-row align-items-center">
+                         <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">Kurs Adı</label>
+                            <input class="form-control mb-2" id="Name" #Name="ngModel" name="Name" [(ngModel)]="formModel.Name" type="text" placeholder="Kurs Adı" maxlength="16">
+                         </div>
+                         <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">Fiyat</label>
+                            <input class="form-control mb-2" id="Fees" #Fees="ngModel" name="Fees" [(ngModel)]="formModel.Fees" type="number" placeholder="Fiyat">
+                         </div>
+                         <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">Süre</label>
+                            <input class="form-control mb-2" id="Duration" #Duration="ngModel" name="Duration" [(ngModel)]="formModel.Duration" type="number" placeholder="Süre(AY)">
+                         </div>
+                         <div class="col-auto">
+                            <button class="btn btn-primary mb-2" type="submit" [disabled]="!form.valid">Kaydet</button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+             <!-- START row-->
+            <div class="row">
+               <div class="col-xl-12">
+                  <div class="card card-default">
+                     <div class="card-header">Kurslarım</div>
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-hover">
+                              <thead>
+                                 <tr>
+                                  <th>#</th>
+                                  <th>Kurs Adı</th>
+                                  <th>Fiyatı</th>
+                                  <th>Süresi</th>
+                                  <th></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr *ngFor="let item of courses;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.Name}}</td>
+                                    <td>{{item.Fees}}</td>
+                                    <td>{{item.Duration}}</td>
+                                    <td>
+                                       <button class="mb-2 btn btn-danger" type="button" (click)="delete(item)">Sil</button>
+                                    </td>
+                                    <td>
+                                       <button class="mb-2 btn btn-success" type="button" [routerLink]="['/teacher/course/content', item.CourseID]">İçerik Ekle</button>
+                                    </td>
+                                    <td>
+                                        <button class="mb-2 btn btn-green" type="button" [routerLink]="['/teacher/course/content/list', item.CourseID]">İçerikleri Gör</button>
+                                    </td>
+                                    <td>
+                                        <button class="mb-2 btn btn-success" type="button" [routerLink]="['/teacher/registration/students', item.CourseID]">Kayıtlı Öğrenciler</button>
+                                     </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END row-->
+         </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

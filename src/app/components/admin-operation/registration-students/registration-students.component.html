@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      <app-admin-operation></app-admin-operation>
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+           
+             <!-- START row-->
+            <div class="row">
+            <div class="col-xl-12">
+                <div class="card card-default">
+                    <div class="card-header">Kursa Kayıtlı Öğrenciler</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                <th>#</th>
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>İletişim</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of students;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.Name}}</td>
+                                    <td>{{item.SureName}}</td>
+                                    <td>{{item.ContactNo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- END row-->
+         </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Online Stuteden Managemnet System</title>
+   <!-- =============== VENDOR STYLES ===============-->
+</head>
+
+<body>
+   <div class="wrapper">
+      <app-admin-operation></app-admin-operation>
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div>Online Student Management System
+                  <small data-localize="dashboard.WELCOME"></small>
+               </div>
+            </div>
+            <!-- START card-->
+            <div class="card card-default">
+                <div class="card-header">Öğrenci Kayıt</div>
+                <div class="card-body">
+                   <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+                     <input type="hidden" id="StudentID" formControlName="StudentID">
+                      <div class="form-row align-items-center">
+                        <div class="col-auto">
+                           <label class="sr-only" for="inlineFormInput">UserName</label>
+                           <input class="form-control mb-2" id="UserName" formControlName="UserName" type="text" placeholder="Kullanıcı Adı" maxlength="16">
+                        </div>
+                        <div class="col-auto">
+                           <label class="sr-only" for="inlineFormInput">Password</label>
+                           <input class="form-control mb-2" id="Password" formControlName="Password" type="password" placeholder="Şifre" maxlength="16">
+                        </div>
+                        <div class="col-auto">
+                           <label class="sr-only" for="inlineFormInput">Name</label>
+                           <input class="form-control mb-2" id="Name" formControlName="Name" type="text" placeholder="İsim" maxlength="16">
+                        </div>
+                        <div class="col-auto">
+                           <label class="sr-only" for="inlineFormInput">SureName</label>
+                           <input class="form-control mb-2" id="SureName" formControlName="SureName" type="text" placeholder="Soyisim" maxlength="16">
+                        </div>
+                        <div class="col-auto">
+                           <label class="sr-only" for="inlineFormInput">ContactNo</label>
+                           <input class="form-control mb-2" id="ContactNo" formControlName="ContactNo" type="text" placeholder="İletişim" maxlength="11">
+                        </div>
+                        <div class="col-auto">
+                           <button class="btn btn-primary mb-2" type="submit" [disabled]="!studentForm.valid">Kaydet</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="col-md-12">
+                  <!-- START card-->
+                  <div class="card card-default">
+                     <div class="card-header">Arama Penceresi</div>
+                     <div class="card-body">
+                        <form>
+                           <div class="form-group col-md-6" >
+                              <label>Arama Çubuğu</label>
+                              <input class="form-control" type="text" name="searchName" [(ngModel)]="searchName" placeholder="İsim - Soyisim Bilgilerine Göre Arama Yapabilirsiniz.">
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+                  <!-- END card-->
+               </div>
+            </div>
+
+            <!-- START row-->
+            <div class="row">
+               <div class="col-xl-12">
+                  <div class="card card-default">
+                     <div class="card-header">Öğrenci Listesi</div>
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-hover">
+                              <thead>
+                                 <tr>
+                                  <th>#</th>
+                                  <th>Kullanıcı Adı</th>
+                                  <th>Şifre</th>
+                                  <th>İsim</th>
+                                  <th>Soyisim</th>
+                                  <th>İletişim</th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr *ngFor="let item of students | filter:searchName ;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.UserName}}</td>
+                                    <td>{{item.Password}}</td>
+                                    <td>{{item.Name}}</td>
+                                    <td>{{item.SureName}}</td>
+                                    <td>{{item.ContactNo}}</td>
+                                    <td>
+                                       <button class="mb-2 btn btn-danger" type="button" (click)="delete(item)">Sil</button>
+                                    </td>
+                                    <td>
+                                       <button class="mb-2 btn btn-success" type="button" (click)="showForEdit(item)">Güncelle</button>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END row-->
+         </div>
+      </section>
+   </div>
+
+</body>
+
+</html>

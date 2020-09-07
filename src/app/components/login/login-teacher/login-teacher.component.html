@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Angle - Bootstrap Admin Template</title>
+</head>
+
+<body>
+   <div class="wrapper" style="padding-top:180px;">
+      <div class="block-center mt-4 wd-xl">
+         <!-- START card-->
+         <div class="card card-flat">
+            <div class="card-body">
+               <p class="text-center py-2">ONLINE STUDENT MANAGEMENT SYSTEM</p>
+               <form class="mb-3" id="loginForm" #form='ngForm' (submit)="onSubmitTeacher(form)" novalidate>
+                  <div class="form-group">
+                     <div class="input-group with-focus">
+                        <input class="form-control border-right-0" #UserName="ngModel" name="UserName" [(ngModel)]="formModel.UserName" id="exampleInputEmail1" type="text" placeholder="Kullanıcı Adı" autocomplete="off" required>
+                        <div class="input-group-append">
+                           <span class="input-group-text text-muted bg-transparent border-left-0">
+                              <em class="fa fa-user"></em>
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="input-group with-focus">
+                        <input class="form-control border-right-0" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" id="exampleInputPassword1" type="password" placeholder="Şifre" required>
+                        <div class="input-group-append">
+                           <span class="input-group-text text-muted bg-transparent border-left-0">
+                              <em class="fa fa-lock"></em>
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+                  <button class="btn btn-block btn-primary mt-3"  type="submit" [disabled]="form.invalid">Teacher Login</button>
+               </form>
+            </div>
+         </div>
+         <!-- END card-->
+         <div class="p-3 text-center">
+            <span class="mr-2">&copy;</span>
+            <span>2020</span>
+            <span class="mr-2">-</span>
+            <span>Vedubox</span>
+         </div>
+      </div>
+   </div>
+</body>
+
+</html>
